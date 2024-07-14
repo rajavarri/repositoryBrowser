@@ -19,7 +19,7 @@ const options = [
   { value: "score", label: "Score ↑" },
   { value: "name", label: "Name ↑" },
   { value: "created_at", label: "Created ↑" },
-  { value: "updated_at", label: "Updated ↑" },
+  { value: "updated", label: "Updated ↑" },
 ];
 
 const formatNumber = (num: number) => {
@@ -55,8 +55,7 @@ const RepositoryDisplay = () => {
       let results = await axios.get(
         `https://api.github.com/search/repositories?q=${
           search ? search : "react"
-        }&sort=${sortField.value}
-        &page=${page}&per_page=${pageLimit}`
+        }&page=${page}&per_page=${pageLimit}&sort=${sortField.value}`
       );
       const repoItems = results.data.items;
       const totalCount = results.data.total_count;
